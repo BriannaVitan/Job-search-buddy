@@ -23,7 +23,16 @@ sequelize.sync({force: forceDatabaseRefresh}).then(() => {
   });
 });
 
+meledits
 // const fetchJobs = async () => {
 //   return await fetch  ('//jobicy.com/api/v2/remote-jobs')
 // }
 // console.log(fetchJobs)
+
+
+// const fetchJobs = async () => {
+//   return await fetch('https://jobicy.com/api/v2/remote-jobs');
+// }
+
+// console.log(fetchJobs);
+ main
