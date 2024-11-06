@@ -21,3 +21,10 @@ sequelize.sync({force: forceDatabaseRefresh}).then(() => {
     console.log(`Server is listening on port ${PORT}`);
   });
 });
+
+
+// const fetchJobs = async () => {
+//   return await fetch('https://jobicy.com/api/v2/remote-jobs');
+// }
+
+// console.log(fetchJobs);
