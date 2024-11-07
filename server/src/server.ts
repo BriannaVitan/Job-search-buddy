@@ -6,33 +6,21 @@ dotenv.config();
 import express from 'express';
 import sequelize from './config/connection.js';
 import routes from './routes/index.js';
-
+import authRoutes from './routes/auth-routes.js';
 
 const app = express();
 const PORT = process.env.PORT || 3001;
+
 
 // Serves static files in the entire client's dist folder
 app.use(express.static('../client/dist'));
 
 app.use(express.json());
 app.use(routes);
+app.use('/api', authRoutes);
 
 sequelize.sync({force: forceDatabaseRefresh}).then(() => {
   app.listen(PORT, () => {
     console.log(`Server is listening on port ${PORT}`);
   });
 });
-
-meledits
-// const fetchJobs = async () => {
-//   return await fetch  ('//jobicy.com/api/v2/remote-jobs')
-// }
-// console.log(fetchJobs)
-
-
-// const fetchJobs = async () => {
-//   return await fetch('https://jobicy.com/api/v2/remote-jobs');
-// }
-
-// console.log(fetchJobs);
- main
