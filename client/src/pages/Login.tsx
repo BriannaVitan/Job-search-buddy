@@ -17,9 +17,12 @@ const Login = () => {
   // Handle changes in the input fields
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
+    console.log(name, value)
     setLoginData({
       ...loginData,
       [name]: value
+    // username: name,
+    // password: value
     });
   };
 
@@ -28,6 +31,7 @@ const Login = () => {
     e.preventDefault();
     try {
       // Call the login API endpoint with loginData
+      console.log(loginData, 'handleSubmit')
       const data = await login(loginData);
       // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
