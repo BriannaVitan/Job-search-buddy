@@ -1,4 +1,5 @@
 import { useState, FormEvent, ChangeEvent } from "react";
+import { useNavigate } from "react-router-dom";
 
 import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
 import { login } from "../api/authAPI";  // Import the login function from the API
@@ -11,6 +12,8 @@ const Login = () => {
     password: ''
   });
 
+  const navigate = useNavigate();
+  
   // Handle changes in the input fields
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -33,6 +36,10 @@ const Login = () => {
     }
   };
 
+  const handleSignUp = () => {
+    navigate('/signup');  // Programmatically navigate to the sign-up route
+  };
+
   return (
     <div className='form-container'>
       <form className='form login-form' onSubmit={handleSubmit}>
@@ -40,7 +47,7 @@ const Login = () => {
         {/* Username input field */}
         <div className="form-group">
           <label>Username</label>
-          <input 
+          <input
             className="form-input"
             type='text'
             name='username'
@@ -51,7 +58,7 @@ const Login = () => {
         {/* Password input field */}
         <div className="form-group">
           <label>Password</label>
-          <input 
+          <input
             className="form-input"
             type='password'
             name='password'
@@ -61,7 +68,7 @@ const Login = () => {
         </div>
         {/* Submit button for the login form */}
         <div className="form-group">
-          <button className="btn btn-primary" type='submit'>Login</button>
+          <button className="btn btn-primary" type='submit'>Login</button> or <button className="btn btn-primary" type='button' onClick={handleSignUp}>Sign Up</button>
         </div>
       </form>
     </div>

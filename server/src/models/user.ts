@@ -5,7 +5,7 @@ import bcrypt from 'bcrypt';
 interface UserAttributes {
   id: number;
   username: string;
-  email: string;
+  // email: string;
   password: string;
 }
 
@@ -16,7 +16,7 @@ interface UserCreationAttributes extends Optional<UserAttributes, 'id'> {}
 export class User extends Model<UserAttributes, UserCreationAttributes> implements UserAttributes {
   public id!: number;
   public username!: string;
-  public email!: string;
+  // public email!: string;
   public password!: string;
 
   public readonly createdAt!: Date;
@@ -29,7 +29,7 @@ export class User extends Model<UserAttributes, UserCreationAttributes> implemen
   }
 }
 
-// Define the UserFactory function to initialize the User model
+// Define the UserFactory function to initialize the User model and sync it
 export function UserFactory(sequelize: Sequelize): typeof User {
   User.init(
     {
@@ -42,10 +42,10 @@ export function UserFactory(sequelize: Sequelize): typeof User {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      email: {
-        type: DataTypes.STRING,
-        allowNull: false,
-      },
+      // email: {
+      //   type: DataTypes.STRING,
+      //   allowNull: false,
+      // },
       password: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -68,6 +68,11 @@ export function UserFactory(sequelize: Sequelize): typeof User {
       }
     }
   );
+
+  // Sync the model with the database to create the table if it doesn't exist
+  User.sync({ alter: true })  // Use `{ force: true }` to drop and recreate the table, or `{ alter: true }` to update columns
+    .then(() => console.log("User table created or updated"))
+    .catch((error) => console.error("Error creating User table:", error));
 
   return User;  // Return the initialized User model
 }

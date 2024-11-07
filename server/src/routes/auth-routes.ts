@@ -38,4 +38,26 @@ const router = Router();
 // POST /login - Login a user
 router.post('/login', login);  // Define the login route
 
+router.post('/signup', async (req: Request, res: Response) => {
+  const { username, password } = req.body;
+
+  try {
+      // Check if user already exists
+      const existingUser = await User.findOne({ where: { username } });
+      if (existingUser) {
+          return res.status(400).json({ message: 'Username already taken' });
+      }
+
+      // Create and save the new user
+      const newUser = await User.create({ username, password: '' });
+      await newUser.setPassword(password);  // Hash the password and set it
+      await newUser.save();
+
+      return res.status(201).json({ message: 'User created successfully' });  // Add return here
+  } catch (error) {
+      console.error("Sign-up error:", error);
+      return res.status(500).json({ message: 'Error during sign-up' });  // Add return here
+  }
+});
+
 export default router;  // Export the router instance
