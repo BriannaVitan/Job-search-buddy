@@ -1,60 +1,52 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
+import { useState, useEffect, useLayoutEffect, useCallback } from "react";
+// import { retrieveUsers } from "../api/userAPI";
+// import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
-import auth from '../utils/auth';
+import Jobs from "./Jobs.tsx";
+import auth from "../utils/auth";
 
 const Home = () => {
+  // // const [users, setUsers] = useState<UserData[]>([]);
+  const [error] = useState(false);
+  const [loginCheck, setLoginCheck] = useState(false);
 
-    const [users, setUsers] = useState<UserData[]>([]);
-    const [error, setError] = useState(false);
-    const [loginCheck, setLoginCheck] = useState(false);
-
-    useEffect(() => {
-        if (loginCheck) {
-            fetchUsers();
-        }
-    }, [loginCheck]);
-
-    useLayoutEffect(() => {
-        checkLogin();
-    }, []);
-
-    const checkLogin = () => {
-        if (auth.loggedIn()) {
-            setLoginCheck(true);
-        }
-    };
-
-    const fetchUsers = async () => {
-        try {
-            const data = await retrieveUsers();
-            setUsers(data)
-        } catch (err) {
-            console.error('Failed to retrieve tickets:', err);
-            setError(true);
-        }
+  const checkLogin = useCallback(() => {
+    if (auth.loggedIn()) {
+      setLoginCheck(true);
     }
+  }, []);
 
-    if (error) {
-        return <ErrorPage />;
+  useEffect(() => {
+    if (loginCheck) {
+      fetchUsers();
     }
+  }, [loginCheck]);
 
-    return (
-        <>
-            {
-                !loginCheck ? (
-                    <div className='login-notice'>
-                        <h1>
-                            Login to view all your friends!
-                        </h1>
-                    </div>
-                ) : (
-                    <UserList users={users} />
-                )}
-        </>
-    );
+  useLayoutEffect(() => {
+    checkLogin();
+  }, [checkLogin]);
+
+  // const fetchUsers = async () => {
+  //     try {
+  //         const data = await retrieveUsers();
+  //         setUsers(data)
+  //     } catch (err) {
+  //         console.error('Failed to retrieve tickets:', err);
+  //         setError(true);
+  //     }
+  // }
+
+  if (error) {
+    return <ErrorPage />;
+  }
+
+  return (
+    <>{!loginCheck ? <p>Please log in to view job listings.</p> : <Jobs />}</>
+  );
+
+  function fetchUsers() {
+    throw new Error("Function not implemented.");
+  }
 };
 
 export default Home;
