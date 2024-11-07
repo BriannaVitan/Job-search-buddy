@@ -6,19 +6,21 @@ import bcrypt from 'bcrypt';  // Import the bcrypt library for password hashing
 // Login function to authenticate a user
 export const login = async (req: Request, res: Response) => {
   const { username, password } = req.body;  // Extract username and password from request body
-
   // Find the user in the database by username
   const user = await User.findOne({
     where: { username },
   });
-
+  
+  console.log('LOGIN', user?.password)
   // If user is not found, send an authentication failed response
   if (!user) {
     return res.status(401).json({ message: 'Authentication failed' });
   }
 
   // Compare the provided password with the stored hashed password
+  console.log(password)
   const passwordIsValid = await bcrypt.compare(password, user.password);
+  console.log('passwordisValid',passwordIsValid)
   // If password is invalid, send an authentication failed response
   if (!passwordIsValid) {
     return res.status(401).json({ message: 'Wrong Password' });
