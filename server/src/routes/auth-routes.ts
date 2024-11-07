@@ -21,7 +21,7 @@ export const login = async (req: Request, res: Response) => {
   const passwordIsValid = await bcrypt.compare(password, user.password);
   // If password is invalid, send an authentication failed response
   if (!passwordIsValid) {
-    return res.status(401).json({ message: 'Authentication failed' });
+    return res.status(401).json({ message: 'Wrong Password' });
   }
 
   // Get the secret key from environment variables
@@ -43,17 +43,22 @@ router.post('/signup', async (req: Request, res: Response) => {
 
   try {
       // Check if user already exists
-      const existingUser = await User.findOne({ where: { username } });
-      if (existingUser) {
-          return res.status(400).json({ message: 'Username already taken' });
-      }
+      // const existingUser = await User.findOne({ where: { username } });
+      // if (existingUser) {
+      //     return res.status(400).json({ message: 'Username already taken' });
+      // }
 
       // Create and save the new user
       const newUser = await User.create({ username, password: '' });
       await newUser.setPassword(password);  // Hash the password and set it
       await newUser.save();
 
-      return res.status(201).json({ message: 'User created successfully' });  // Add return here
+      const secretKey = process.env.JWT_SECRET_KEY || '';
+
+  // Generate a JWT token for the authenticated user
+  const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
+  
+      return res.status(201).json({token});  // Add return here
   } catch (error) {
       console.error("Sign-up error:", error);
       return res.status(500).json({ message: 'Error during sign-up' });  // Add return here

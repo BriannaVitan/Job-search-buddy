@@ -1,6 +1,6 @@
 import { useState, FormEvent, ChangeEvent } from "react";
-
-
+import Auth from '../utils/auth'; 
+import { signup } from "../api/authAPI"; 
 import { UserSignUp } from "../interfaces/UserLogin";  // Import the interface for UserLogin
 
 const SignUp = () => {
@@ -24,21 +24,10 @@ const SignUp = () => {
         e.preventDefault();
 
         try {
-            // Send a POST request to your backend's sign-up endpoint
-            const response = await fetch('/api/signup', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(signUpData)
-            });
+            const data = await signup(signUpData)
 
-            if (response.ok) {
-                // Handle successful sign-up, e.g., redirect to login
-                console.log("User signed up successfully");
-            } else {
-                // Handle errors, e.g., username already taken
-                const errorData = await response.json();
-                console.error("Error during sign-up:", errorData);
-            }
+            // Send a POST request to your backend's sign-up endpoint
+            Auth.login(data.token);
         } catch (error) {
             console.error("Sign-up error:", error);
         }
