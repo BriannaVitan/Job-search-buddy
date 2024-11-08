@@ -15,21 +15,6 @@ const Home = () => {
   }, []);
 
 
-    return (
-        <>
-            {
-                !loginCheck ? (
-                    <div className='login-notice'>
-                        <h1>
-                            Login to view all your Jobs!
-                        </h1>
-                    </div>
-                ) : (
-                    <UserList users={users} />
-                )}
-        </>
-    );
-
   useLayoutEffect(() => {
     checkLogin();
   }, [checkLogin]);
@@ -43,7 +28,6 @@ const Home = () => {
   return (
     <>{!loginCheck ? <p>Please log in to view job listings.</p> : <Jobs />}</>
   );
-
 
 };
 
