@@ -1,10 +1,7 @@
 import { useState, useEffect } from 'react';
 import getJobs from '../api/jobsAPI';
-
-interface Job {
-    id: number;
-    title: string;
-}
+import { Job } from '../interfaces/JobInterfaces';
+import { JobApiResponse } from '../interfaces/JobInterfaces';
 
 const Jobs: React.FC = () => {
     const [jobs, setJobs] = useState<Job[]>([]);
@@ -22,7 +19,7 @@ const Jobs: React.FC = () => {
 
         fetchJobs();
     }, []);
-
+console.log(jobs);//this logs the data from API
     if (error) {
         return <div>Error: {error}</div>;
     }
@@ -30,11 +27,12 @@ const Jobs: React.FC = () => {
     return (
         <div>
             <h1>Job Listings</h1>
-            <ul>
+            <p></p>
+            {/* <ul>
                 {jobs.map((job) => (
                     <li key={job.id}>{job.title}</li>
                 ))}
-            </ul>
+            </ul> */}
         </div>
     );
 };
