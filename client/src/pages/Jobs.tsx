@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
 import getJobs from '../api/jobsAPI';
+import getAffirm from '../api/affirmAPI';
 import { Job } from '../interfaces/JobInterfaces';
+import { Affirmation } from '../interfaces/AffirmInterface';
 
 const Jobs: React.FC = () => {
     const [jobsArray, setJobs] = useState<Job[]>([]);
     const [error, setError] = useState<string | null>(null);
+    const [affirmation, setAffrim] = useState<Affirmation>();
 
     useEffect(() => {
         const fetchJobs = async () => {
@@ -18,7 +21,20 @@ const Jobs: React.FC = () => {
         fetchJobs();
     }, []);
 
-console.log(jobsArray);//this logs the data from API
+    useEffect(() => {
+        const fetchAffirm = async () => {
+            const data = await getAffirm();
+            if (data) {
+                setAffrim(data);
+            } else {
+                setError('Failed to load jobs.');
+            }
+        };
+        fetchAffirm();
+    }, []);
+
+console.log(jobsArray);//this logs the data from job API
+console.log(affirmation);//this logs the data from affirm API
 
     if (error) {
         return <div>Error: {error}</div>;
@@ -34,6 +50,7 @@ console.log(jobsArray);//this logs the data from API
                         <img></img>
                         <br></br>
                         <h1>{job.jobTitle}</h1>
+                        <p>{affirmation?.affirmation}</p>
                         </li>
                 ))}
             </ul>
