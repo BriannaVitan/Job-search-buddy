@@ -12,7 +12,7 @@ const UserList: React.FC<UserListProps> = ({ users }) => {
     return (
         <>
             <h2 className="pb-5">
-                Check out all your friends!
+                Check out all these Jobs!
             </h2>
             {users && users.map((user) => (
                 <div className="row align-center mb-5" key={user.id}>
