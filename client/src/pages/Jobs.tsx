@@ -3,11 +3,13 @@ import getJobs from '../api/jobsAPI';
 import getAffirm from '../api/affirmAPI';
 import { Job } from '../interfaces/JobInterfaces';
 import { Affirmation } from '../interfaces/AffirmInterface';
+import { useNavigate } from 'react-router-dom';
 
 const Jobs: React.FC = () => {
     const [jobsArray, setJobs] = useState<Job[]>([]);
     const [error, setError] = useState<string | null>(null);
     const [affirmation, setAffrim] = useState<Affirmation>();
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchJobs = async () => {
@@ -33,6 +35,10 @@ const Jobs: React.FC = () => {
         fetchAffirm();
     }, []);
 
+    const handleCardClick = (job: Job) => {
+        navigate(`/Jobs/${job.id}`, { state: { job } });
+    };
+
 console.log(jobsArray);//this logs the data from job API
 console.log(affirmation);//this logs the data from affirm API
 
@@ -46,16 +52,18 @@ console.log(affirmation);//this logs the data from affirm API
             <p></p>
             <ul>
                 {jobsArray.map((job) => (
-                    <li key={job.id}>
-                        <img></img>
-                        <br></br>
-                        <h1>{job.jobTitle}</h1>
-                        <p>{affirmation?.affirmation}</p>
+                    <li key={job.id} onClick={() => handleCardClick(job)}>
+                        <img src= {job.companyLogo} style={{maxWidth: 200}}></img>
+                        <h2>{job.jobTitle}</h2>
+                        <p>Company: {job.companyName}</p>
+                        <p>Location: {job.jobGeo}</p>
                         </li>
                 ))}
             </ul>
         </div>
     );
 };
+
+//{affirmation?.affirmation}
 
 export default Jobs;
