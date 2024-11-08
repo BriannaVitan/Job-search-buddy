@@ -1,4 +1,4 @@
-import { UserLogin } from "../interfaces/UserLogin";  // Import the UserLogin interface for typing userInfo
+import { UserLogin, UserSignUp } from "../interfaces/UserLogin";  // Import the UserLogin interface for typing userInfo
 
 // Function to send a POST request to the '/auth/login' endpoint with user login information
 const login = async (userInfo: UserLogin) => {
@@ -28,4 +28,25 @@ const login = async (userInfo: UserLogin) => {
   }
 }
 
-export { login };  // Export the login function to be used elsewhere in the application
+const signup = async (userInfo: UserSignUp) => {
+  try {
+    // Send a POST request to your backend's sign-up endpoint
+    const response = await fetch('/auth/signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(userInfo)
+    });
+    console.log(response)
+    if (!response.ok) {
+        // Handle successful sign-up, e.g., redirect to login
+        const errorData = await response.json(); // Parse error response as JSON
+        throw new Error(`Error: ${errorData.message}`); // Throw a detailed error message    
+    } 
+    const data = await response.json();
+
+    return data;  // Return the data received from the server
+} catch (error) {
+    console.error("Sign-up error:", error);
+}
+}
+export { login, signup };  // Export the login function to be used elsewhere in the application

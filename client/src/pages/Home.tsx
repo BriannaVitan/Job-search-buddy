@@ -1,45 +1,19 @@
-import { useState, useEffect, useLayoutEffect } from "react";
-import { retrieveUsers } from "../api/userAPI";
-import type { UserData } from "../interfaces/UserData";
+import { useState, useLayoutEffect, useCallback } from "react";
 import ErrorPage from "./ErrorPage";
-import UserList from '../components/Users';
-import auth from '../utils/auth';
+import Jobs from "./Jobs.tsx";
+import auth from "../utils/auth";
 
 const Home = () => {
+ 
+  const [error] = useState(false);
+  const [loginCheck, setLoginCheck] = useState(false);
 
-    const [users, setUsers] = useState<UserData[]>([]);
-    const [error, setError] = useState(false);
-    const [loginCheck, setLoginCheck] = useState(false);
-
-    useEffect(() => {
-        if (loginCheck) {
-            fetchUsers();
-        }
-    }, [loginCheck]);
-
-    useLayoutEffect(() => {
-        checkLogin();
-    }, []);
-
-    const checkLogin = () => {
-        if (auth.loggedIn()) {
-            setLoginCheck(true);
-        }
-    };
-
-    const fetchUsers = async () => {
-        try {
-            const data = await retrieveUsers();
-            setUsers(data)
-        } catch (err) {
-            console.error('Failed to retrieve tickets:', err);
-            setError(true);
-        }
+  const checkLogin = useCallback(() => {
+    if (auth.loggedIn()) {
+      setLoginCheck(true);
     }
+  }, []);
 
-    if (error) {
-        return <ErrorPage />;
-    }
 
     return (
         <>
@@ -55,6 +29,22 @@ const Home = () => {
                 )}
         </>
     );
+
+  useLayoutEffect(() => {
+    checkLogin();
+  }, [checkLogin]);
+
+
+
+  if (error) {
+    return <ErrorPage />;
+  }
+
+  return (
+    <>{!loginCheck ? <p>Please log in to view job listings.</p> : <Jobs />}</>
+  );
+
+
 };
 
 export default Home;
