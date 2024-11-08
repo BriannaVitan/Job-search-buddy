@@ -1,16 +1,14 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import Auth from '../utils/auth'; 
 import { signup } from "../api/authAPI"; 
-import { UserSignUp } from "../interfaces/UserLogin";  // Import the interface for UserLogin
+import { UserSignUp } from "../interfaces/UserLogin";
 
 const SignUp = () => {
-    // State to manage the login form data
     const [signUpData, setSignUpData] = useState<UserSignUp>({
         username: '',
         password: ''
     });
 
-    // Handle changes in the input fields
     const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
         setSignUpData({
@@ -19,14 +17,12 @@ const SignUp = () => {
         });
     };
 
-    // Handle form submission for login
     const handleSubmit = async (e: FormEvent) => {
         e.preventDefault();
 
         try {
             const data = await signup(signUpData)
 
-            // Send a POST request to your backend's sign-up endpoint
             Auth.login(data.token);
         } catch (error) {
             console.error("Sign-up error:", error);

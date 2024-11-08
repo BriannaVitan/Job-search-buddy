@@ -1,6 +1,11 @@
-const getJobs = async () => {
+import { JobApiResponse } from '../interfaces/JobInterfaces';
+
+const getJobs = async (): Promise<JobApiResponse | null> => {
     try {
         const token = localStorage.getItem('id_token');
+        if (!token) {
+            throw new Error('Authentication token not found in local storage.');
+        }
 
         const response = await fetch('/api/postings/', {
             headers: {
@@ -13,11 +18,11 @@ const getJobs = async () => {
             throw new Error('Invalid API response, check network tab!');
         }
 
-        const data = await response.json();
+        const data: JobApiResponse = await response.json();
         return data;
     } catch (err) {
         console.log('Error from data retrieval:', err);
-        return [];
+        return null;
     }
 };
 

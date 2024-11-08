@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
 import getJobs from '../api/jobsAPI';
 import { Job } from '../interfaces/JobInterfaces';
-import { JobApiResponse } from '../interfaces/JobInterfaces';
 
 const Jobs: React.FC = () => {
-    const [jobs, setJobs] = useState<Job[]>([]);
+    const [jobsArray, setJobs] = useState<Job[]>([]);
     const [error, setError] = useState<string | null>(null);
 
     useEffect(() => {
         const fetchJobs = async () => {
-            try {
-                const data: Job[] = await getJobs();
-                setJobs(data);
-            } catch (err: any) {
-                setError(err.message);
+            const data = await getJobs();
+            if (data) {
+                setJobs(data.jobs);
+            } else {
+                setError('Failed to load jobs.');
             }
         };
-
         fetchJobs();
     }, []);
-console.log(jobs);//this logs the data from API
+
+console.log(jobsArray);//this logs the data from API
+
     if (error) {
         return <div>Error: {error}</div>;
     }

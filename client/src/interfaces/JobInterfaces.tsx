@@ -1,4 +1,3 @@
-// Interface for each job in the jobs array
 export interface Job {
     id: number;
     url: string;
@@ -18,7 +17,6 @@ export interface Job {
     salaryCurrency?: string;
 }
 
-// Main interface for the API response
 export interface JobApiResponse {
     apiVersion: string;
     documentationUrl: string;
