@@ -28,11 +28,15 @@ console.log(jobsArray);//this logs the data from API
         <div>
             <h1>Job Listings</h1>
             <p></p>
-            {/* <ul>
-                {jobs.map((job) => (
-                    <li key={job.id}>{job.title}</li>
+            <ul>
+                {jobsArray.map((job) => (
+                    <li key={job.id}>
+                        <img></img>
+                        <br></br>
+                        <h1>{job.jobTitle}</h1>
+                        </li>
                 ))}
-            </ul> */}
+            </ul>
         </div>
     );
 };
