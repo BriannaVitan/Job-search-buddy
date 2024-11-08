@@ -4,6 +4,7 @@ import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
 import UserList from '../components/Users';
 import auth from '../utils/auth';
+import buddy from '../assets/buddyimg.webp'
 
 const Home = () => {
 
@@ -47,7 +48,9 @@ const Home = () => {
                 <div className='login-notice'>
                      {/* Add the image here */}
             <img 
-                src="https://files.oaiusercontent.com/file-HNuO1CA7hAhlAKrb9pI9jlDn?se=2024-11-08T16%3A33%3A30Z&sp=r&sv=2024-08-04&sr=b&rscc=max-age%3D604800%2C%20immutable%2C%20private&rscd=attachment%3B%20filename%3D6363f6de-e1e0-41ac-a230-c777ecffd28e.webp&sig=IFRWwFKjViyTwOGo6t0prxx/nft06XHbP1Q0rery5og%3D" // Replace with your image path
+
+                src= {buddy} // Replace with your image path
+                style= {{maxWidth: 300}}
                 alt="Job Search Guy image"
                 className="login-image" // Optional: add a CSS class for styling
             />
