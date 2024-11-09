@@ -40,6 +40,7 @@
   
 }
 html { 
+
     font-family:'Copperplate', 'Lucida Sans Unicode', 'Lucida  Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: lightskyblue;
     text-align: center;
@@ -92,9 +93,7 @@ body {
   color: var(--bodyTextColor);
 }
                           
-/*-- -------------------------- -->
-<---            Blog            -->
-<--- -------------------------- -*/
+
 
 /* Mobile - 360px */
 @media only screen and (min-width: 0rem) {
@@ -157,7 +156,7 @@ body {
     /* 16px - 24px */
     padding: clamp(1rem, 3vw, 1.5rem);
     box-sizing: border-box;
-    background-color: #fff;
+    background-color: #6ec9ec;
     border: 1px solid #e8e8e8;
     border-radius: 2.5rem;
     grid-column: span 12;
@@ -332,7 +331,7 @@ body {
   #blog-1540 .cs-wrapper {
     width: 3rem;
     height: 3rem;
-    border: 1px solid #bababa;
+    border: 1px solid #7a3b3b;
     border-radius: 50%;
     display: flex;
     justify-content: center;
