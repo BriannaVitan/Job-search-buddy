@@ -17,16 +17,39 @@
 }
 
 .div {
-  padding: 20px;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    padding: 2px;
+    font-family: 'Copperplate', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: gray;
+    font-size: 20px;
     color: black;
+    text-align: left;
+}
+.form-container {
+  font-family:'Copperplate', 'Lucida Sans Unicode', 'Lucida  Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: lightskyblue;
+    text-align: center;
+}
+.form-container h1 {
+  font-size: 50px;
+  margin: 30px;
+}
+
+.login-notice {
+  font-family:'Copperplate', 'Lucida Sans Unicode', 'Lucida  Grande', 'Lucida Sans', Arial, sans-serif;
+  padding: 70px;
+  
 }
 html { 
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Brush Script MT', 'Lucida Sans', Arial, sans-serif;
+
+    font-family:'Copperplate', 'Lucida Sans Unicode', 'Lucida  Grande', 'Lucida Sans', Arial, sans-serif;
     background-color: lightskyblue;
-    text-align: center
+    text-align: center;
   }
+.form-group {
+  font-family: 'Copperplate';
+  padding: 15px;
+  text-align: center;
+}
 
 body {
   margin: 0;
