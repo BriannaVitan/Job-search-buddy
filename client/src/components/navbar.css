@@ -1,0 +1,55 @@
+
+.navbar {
+    background-color: var(--headerColor) !important;
+    color: var(--bodyTextColorWhite) !important;
+    padding: 1rem 2rem !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: space-between !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1) !important;
+    font-family: 'Copperplate', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
+}
+
+.navbar .navbar-title {
+    color: var(--primary) !important;
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    margin: 0 !important;
+}
+
+
+.navbar .navbar-buttons .btn {
+    background-color: var(--primary) !important;
+    color: var(--bodyTextColorWhite) !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    text-decoration: none !important;
+    padding: 0.5rem 1rem !important;
+    margin-left: 1rem !important;
+    border: none !important;
+    border-radius: 0.25rem !important;
+    cursor: pointer !important;
+    transition: background-color 0.3s, color 0.3s !important;
+}
+
+.navbar .navbar-buttons .btn:hover {
+    background-color: var(--primaryLight) !important;
+}
+
+.navbar .navbar-buttons .btn-link {
+    color: inherit !important;
+    text-decoration: none !important;
+}
+
+@media only screen and (max-width: 768px) {
+    .navbar {
+        flex-direction: column !important;
+        align-items: flex-start !important;
+    }
+    .navbar .navbar-buttons .btn {
+        margin: 0.5rem 0 !important;
+    }
+}

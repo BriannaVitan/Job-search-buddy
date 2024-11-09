@@ -3,8 +3,9 @@ import { retrieveUsers } from "../api/userAPI";
 import type { UserData } from "../interfaces/UserData";
 import ErrorPage from "./ErrorPage";
 import auth from '../utils/auth';
-import buddy from '../assets/buddyimg.webp'
+import buddy from '../assets/buddy.png'
 import Jobs from "./Jobs";
+import './home.css';
 
 const Home = () => {
 
@@ -51,13 +52,11 @@ const Home = () => {
             <h1>
               Login to view all your Jobs!   <br />
             </h1>
-            {/* Add the image here */}
             <img
-
-              src={buddy} // Replace with your image path
+              src={buddy}
               style={{ maxWidth: 500 }}
               alt="Job Search Guy image"
-              className="login-image" // Optional: add a CSS class for styling
+              className="login-image"
             />
             <h1></h1>
             

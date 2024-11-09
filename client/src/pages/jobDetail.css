@@ -1,0 +1,106 @@
+.job-detail-container {
+    background-color: rgb(230, 230, 230) !important;
+    padding: 2rem !important;
+    color: var(--headerColor) !important;
+    font-family: 'Copperplate', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+    max-width: 800px !important;
+    margin: 2rem auto !important;
+    border-radius: 1rem !important;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15) !important;
+    text-align: left !important;
+}
+
+.job-detail-container img {
+    display: block !important;
+    max-width: 150px !important;
+    margin: 0 auto 1rem auto !important;
+    border-radius: 0.5rem !important;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1) !important;
+}
+
+.job-detail-container h1 {
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    color: var(--primary) !important;
+    margin-bottom: 1rem !important;
+    text-align: center !important;
+}
+
+.job-detail-container h2 {
+    font-size: 1.25rem !important;
+    font-weight: 700 !important;
+    color: var(--primary) !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 2px solid var(--primaryLight) !important;
+}
+
+.job-detail-container h3 {
+    font-size: 1.2rem !important;
+    font-weight: 600 !important;
+    color: var(--primary) !important;
+    margin-top: 1.5rem !important;
+    margin-bottom: 0.5rem !important;
+    border-bottom: 2px solid var(--primaryLight) !important;
+}
+
+.job-detail-container p {
+    font-size: 1rem !important;
+    line-height: 1.6 !important;
+    color: rgb(255, 255, 255);
+    margin: 0.5rem 0 !important;
+}
+
+.job-detail-container .job-description-content {
+    background-color: #464646 !important;
+    padding: 1.5rem !important;
+    border-radius: 0.5rem !important;
+    box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.05) !important;
+    margin-top: 1rem !important;
+}
+
+.blackText {
+    color: black !important;
+}
+
+.bubble {
+    position: relative;
+    background: #fff;
+    padding: 20px;
+    color: #222;
+    border-radius: 25px;
+    font-weight: bold;
+    max-width: 300px; /* Set to match the image width */
+    word-wrap: break-word; /* Ensures text wraps within the bubble */
+    text-align: center; /* Center-align text within the bubble */
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for emphasis */
+}
+
+.bubble::after {
+    content: "";
+    display: block;
+    position: absolute;
+
+    right: 45px;
+    bottom: -15px;
+
+    width: 0;
+    height: 0;
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 15px solid #fff;
+}
+
+.buddy {
+    margin-top: -25px;
+}
+
+.buddy-container {
+    position: fixed !important;
+    bottom: -12px !important;
+    right: 0px !important;
+    z-index: 1000 !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+}
