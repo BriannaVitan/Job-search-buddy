@@ -57,8 +57,7 @@ console.log(affirmation);//this logs the data from affirm API
             <section id="blog-1540">
                 <div className="cs-container">
                     <div className="cs-content">
-                        <span className="cs-topper">Upcoming Events</span>
-                        <h2 className="cs-title">Open Job Listings</h2>
+                        {/* <h2 className="cs-title">Open Job Listings</h2> */}
                         <p className="cs-text">
                            Encouraging you to further your career click by click!
                         </p>
@@ -68,7 +67,7 @@ console.log(affirmation);//this logs the data from affirm API
                             <a href="#" className="cs-link">
                                 <div className="cs-picture-group">
                                     <picture className="cs-picture" aria-hidden="true">
-                                        <source media="(max-width: 600px)" srcSet="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/People/daycare1.jpg" />
+                                        
                                         <source media="(min-width: 601px)" srcSet={job.companyLogo} />
                                         <img loading="lazy" decoding="async" src={job.companyLogo} width="365" height="201" alt="Daycare activity" />
                                     </picture>
@@ -94,12 +93,16 @@ console.log(affirmation);//this logs the data from affirm API
                                             
                                         </span>
                                     </div>
-                                    <h3 className="cs-h3">10 easy steps to learn more about play freehand</h3>
+                                    <h3 className="cs-h3">Web Developer</h3>
                                     <p className="cs-item-text">
-                                        An evening event where children and parents come together for storytelling, stargazing, building...
+                                        Location:California - Salary: 20k or higher 
                                     </p>
                                     <div className="cs-bottom">
                                         <div className="cs-author-group">
+                                        <span className="cs-name">
+                                    Jenny Wilson
+                                    <span className="cs-job">CEO</span>
+                                </span>
                                         </div>
                                         <picture className="cs-wrapper">
                                             <img className="cs-arrow" loading="lazy" decoding="async" src="https://csimg.nyc3.cdn.digitaloceanspaces.com/Images/Icons/grey-right-chevron.svg" alt="Arrow icon" width="24" height="24" aria-hidden="true" />
