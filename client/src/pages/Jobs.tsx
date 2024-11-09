@@ -95,7 +95,7 @@ console.log(affirmation);//this logs the data from affirm API
                                     </div>
                                     <h3 className="cs-h3">Web Developer</h3>
                                     <p className="cs-item-text">
-                                        Location:California - Salary: 20k or higher 
+                                        Location:{job.jobGeo} <br></br> Salary:{job.annualSalaryMax}
                                     </p>
                                     <div className="cs-bottom">
                                         <div className="cs-author-group">
