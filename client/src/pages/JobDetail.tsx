@@ -1,12 +1,31 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Job } from '../interfaces/JobInterfaces';
 import React from 'react';
+import { useEffect, useState } from 'react';
 
 const JobDetail: React.FC = () => {
     const location = useLocation();
-    const job = location.state?.job as Job;
+    const navigate = useNavigate();
+    const { id } = useParams<{ id: string }>(); // Get job id from URL
+    const [job, setJob] = useState<Job | null>(location.state?.job || null);
 
-    // Function to convert HTML to XML-like structure
+    // Fallback to fetch job by ID if job data is not in location.state
+    useEffect(() => {
+        if (!job && id) {
+            const fetchJobById = async () => {
+                try {
+                    const response = await fetch(`/api/jobs/${id}`); // Replace with your actual API endpoint
+                    const data = await response.json();
+                    setJob(data); // Set job data from fetch
+                } catch (error) {
+                    console.error('Failed to fetch job data', error);
+                    navigate('/'); // Redirect to homepage or jobs list on failure
+                }
+            };
+            fetchJobById();
+        }
+    }, [job, id, navigate]);
+
     const convertHtmlToXml = (htmlString: string): any => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlString, 'text/html');
@@ -57,7 +76,6 @@ const JobDetail: React.FC = () => {
         return root;
     };
 
-    // Function to transform XML Document to React components
     const xmlToReact = (xmlNode: Node): React.ReactNode => {
         if (xmlNode.nodeType === Node.TEXT_NODE) {
             return xmlNode.textContent;
@@ -90,9 +108,9 @@ const JobDetail: React.FC = () => {
     const jobDescriptionXml = job ? convertHtmlToXml(job.jobDescription) : null;
     const jobDescriptionContent = jobDescriptionXml ? xmlToReact(jobDescriptionXml) : '';
 
-    // if (!job) {
-    //     return <div>Job not found</div>;
-    // }
+    if (!job) {
+        return <div>Job not found</div>;
+    }
 
     return (
         <div>
