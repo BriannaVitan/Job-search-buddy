@@ -16,9 +16,18 @@
   --sectionPadding: clamp(3.75rem, 7.82vw, 6.25rem) 1rem;
 }
 
-html { 
-  background-color: tomato;
+.div {
+  padding: 20px;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: gray;
+    color: black;
 }
+html { 
+    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida  Grande', 'Lucida Sans', Arial, sans-serif;
+    background-color: lightskyblue;
+    text-align: center
+  }
+
 body {
   margin: 0;
   padding: 0;
