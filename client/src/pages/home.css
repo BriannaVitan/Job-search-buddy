@@ -1,0 +1,27 @@
+.login-notice {
+    background-color: lightskyblue !important;
+    color: var(--headerColor) !important;
+    padding: 2rem !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    min-height: 100vh !important;
+    font-family: 'Copperplate', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif !important;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1) !important;
+}
+
+.login-notice h1 {
+    font-size: 2rem !important;
+    font-weight: bold !important;
+    color: var(--primary) !important;
+    margin: 1rem 0 !important;
+}
+
+.login-notice .login-image {
+    max-width: 100% !important;
+    height: auto !important;
+    margin-top: 1rem !important;
+    border-radius: 0.5rem !important;
+}

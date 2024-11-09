@@ -1,12 +1,13 @@
 import { useState, FormEvent, ChangeEvent } from "react";
 import { useNavigate } from "react-router-dom";
+import './login.css';
 
-import Auth from '../utils/auth';  // Import the Auth utility for managing authentication state
-import { login } from "../api/authAPI";  // Import the login function from the API
-import { UserLogin } from "../interfaces/UserLogin";  // Import the interface for UserLogin
+import Auth from '../utils/auth';
+import { login } from "../api/authAPI";
+import { UserLogin } from "../interfaces/UserLogin"; 
 
 const Login = () => {
-  // State to manage the login form data
+
   const [loginData, setLoginData] = useState<UserLogin>({
     username: '',
     password: ''
@@ -14,41 +15,36 @@ const Login = () => {
 
   const navigate = useNavigate();
   
-  // Handle changes in the input fields
+
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     console.log(name, value)
     setLoginData({
       ...loginData,
       [name]: value
-    // username: name,
-    // password: value
     });
   };
 
-  // Handle form submission for login
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
     try {
-      // Call the login API endpoint with loginData
       console.log(loginData, 'handleSubmit')
       const data = await login(loginData);
-      // If login is successful, call Auth.login to store the token in localStorage
       Auth.login(data.token);
     } catch (err) {
-      console.error('Failed to login', err);  // Log any errors that occur during login
+      console.error('Failed to login', err);
     }
   };
 
   const handleSignUp = () => {
-    navigate('/signup');  // Programmatically navigate to the sign-up route
+    navigate('/signup');
   };
 
   return (
     <div className='form-container'>
       <form className='form login-form' onSubmit={handleSubmit}>
         <h1>Login</h1>
-        {/* Username input field */}
+      
         <div className="form-group">
           <label> Username </label>
           <input
@@ -59,7 +55,7 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        {/* Password input field */}
+   
         <div className="form-group">
           <label> Password </label>
           <input
@@ -70,7 +66,6 @@ const Login = () => {
             onChange={handleChange}
           />
         </div>
-        {/* Submit button for the login form */}
         
         <div className="form-group">
           <button className="btn btn-primary" type='submit'> Login </button> or <button className="btn btn-primary" type='button' onClick={handleSignUp}> Sign Up </button>

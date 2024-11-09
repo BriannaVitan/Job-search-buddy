@@ -2,24 +2,36 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 import { Job } from '../interfaces/JobInterfaces';
 import React from 'react';
 import { useEffect, useState } from 'react';
+import './jobDetail.css';
+import getAffirm from '../api/affirmAPI';
+import { Affirmation } from '../interfaces/AffirmInterface';
+import buddy from '../assets/buddy.png'
 
 const JobDetail: React.FC = () => {
     const location = useLocation();
     const navigate = useNavigate();
-    const { id } = useParams<{ id: string }>(); // Get job id from URL
+    const { id } = useParams<{ id: string }>();
     const [job, setJob] = useState<Job | null>(location.state?.job || null);
+    const [affirmation, setAffirm] = useState<Affirmation | null>(null);
 
-    // Fallback to fetch job by ID if job data is not in location.state
+    useEffect(() => {
+        const fetchAffirm = async () => {
+            const data = await getAffirm();
+            setAffirm(data);
+        };
+        fetchAffirm();
+    }, []);
+
     useEffect(() => {
         if (!job && id) {
             const fetchJobById = async () => {
                 try {
-                    const response = await fetch(`/api/jobs/${id}`); // Replace with your actual API endpoint
+                    const response = await fetch(`/api/jobs/${id}`);
                     const data = await response.json();
-                    setJob(data); // Set job data from fetch
+                    setJob(data);
                 } catch (error) {
                     console.error('Failed to fetch job data', error);
-                    navigate('/'); // Redirect to homepage or jobs list on failure
+                    navigate('/');
                 }
             };
             fetchJobById();
@@ -113,17 +125,31 @@ const JobDetail: React.FC = () => {
     }
 
     return (
-        <div>
+        <>
+        <div className="job-detail-container">
+            <img src={job.companyLogo} alt="Company Logo" />
             <h1>{job.jobTitle}</h1>
-            <p>Company: {job.companyName}</p>
-            <br />
-            <p>Location: {job.jobGeo}</p>
-            <br />
-            <div>
-                <h2>Description:</h2>
+            
+            <h2>Company</h2>
+            <p className='blackText'>{job.companyName}</p>
+            
+            <h2 >Location</h2>
+            <p className='blackText'>{job.jobGeo}</p>
+
+            <h2>Salary</h2>
+            <p className='blackText'>{job.annualSalaryMax} {job.salaryCurrency}</p>
+            
+            <h3>Description:</h3>
+            <p className="job-description-content">
                 {jobDescriptionContent}
-            </div>
+            </p>
         </div>
+        <div className='buddy-container'>
+            <span className='bubble'>{affirmation?.affirmation}!</span>
+            <br></br>
+            <img src={buddy} className='buddy'></img>
+        </div>
+    </>
     );
 };
 
