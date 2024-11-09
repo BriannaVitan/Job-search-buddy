@@ -33,9 +33,15 @@ const Navbar = () => {
             </button>
           ) : (
             // Render logout button if user is logged in
+            <>
+            <button className='btn' type='button'>
+              <Link to='/Jobs'>Job Listings</Link>
+            </button>
+            
             <button className="btn" type='button' onClick={() => {
               auth.logout();  // Call logout() method from auth utility on button click
             }}>Logout</button>
+            </>
           )
         }
       </div>
