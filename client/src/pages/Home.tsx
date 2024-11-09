@@ -48,19 +48,19 @@ const Home = () => {
       {
         !loginCheck ? (
           <div className='login-notice'>
+            <h1>
+              Login to view all your Jobs!   <br />
+            </h1>
             {/* Add the image here */}
             <img
 
               src={buddy} // Replace with your image path
-              style={{ maxWidth: 300 }}
+              style={{ maxWidth: 500 }}
               alt="Job Search Guy image"
               className="login-image" // Optional: add a CSS class for styling
             />
             <h1></h1>
-            <h1>
-              Login to view all your Jobs!   <br />
-              Encouraging your Job Search
-            </h1>
+            
           </div>
         ) : (
           <Jobs />

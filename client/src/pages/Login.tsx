@@ -50,7 +50,7 @@ const Login = () => {
         <h1>Login</h1>
         {/* Username input field */}
         <div className="form-group">
-          <label>Username</label>
+          <label> Username </label>
           <input
             className="form-input"
             type='text'
@@ -61,7 +61,7 @@ const Login = () => {
         </div>
         {/* Password input field */}
         <div className="form-group">
-          <label>Password</label>
+          <label> Password </label>
           <input
             className="form-input"
             type='password'
@@ -71,8 +71,9 @@ const Login = () => {
           />
         </div>
         {/* Submit button for the login form */}
+        
         <div className="form-group">
-          <button className="btn btn-primary" type='submit'>Login</button> or <button className="btn btn-primary" type='button' onClick={handleSignUp}>Sign Up</button>
+          <button className="btn btn-primary" type='submit'> Login </button> or <button className="btn btn-primary" type='button' onClick={handleSignUp}> Sign Up </button>
         </div>
       </form>
     </div>
