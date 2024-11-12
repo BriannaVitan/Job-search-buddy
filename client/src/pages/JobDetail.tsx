@@ -1,7 +1,6 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+import { useLocation, useNavigate, useParams } from 'react-router-dom'; 
 import { Job } from '../interfaces/JobInterfaces';
-import React from 'react';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import './jobDetail.css';
 import getAffirm from '../api/affirmAPI';
 import { Affirmation } from '../interfaces/AffirmInterface';
@@ -38,7 +37,7 @@ const JobDetail: React.FC = () => {
         }
     }, [job, id, navigate]);
 
-    const convertHtmlToXml = (htmlString: string): any => {
+    const convertHtmlToXml = (htmlString: string) => {
         const parser = new DOMParser();
         const doc = parser.parseFromString(htmlString, 'text/html');
 
@@ -88,6 +87,19 @@ const JobDetail: React.FC = () => {
         return root;
     };
 
+    const saveJob = (): void => {
+        // Get existing jobs from localStorage, or initialize an empty array if no jobs are found
+        const allJobs: Job[] = JSON.parse(localStorage.getItem("savedJobs") || '[]');
+    
+        // Add the current job to the array
+        if (job) {
+            allJobs.push(job);
+        }
+    
+        // Save the updated array back to localStorage
+        localStorage.setItem("savedJobs", JSON.stringify(allJobs));
+    }
+
     const xmlToReact = (xmlNode: Node): React.ReactNode => {
         if (xmlNode.nodeType === Node.TEXT_NODE) {
             return xmlNode.textContent;
@@ -121,7 +133,7 @@ const JobDetail: React.FC = () => {
     const jobDescriptionContent = jobDescriptionXml ? xmlToReact(jobDescriptionXml) : '';
 
     if (!job) {
-        return <div>Job not found</div>;
+        return <div>Loading...</div>;
     }
 
     return (
@@ -129,27 +141,28 @@ const JobDetail: React.FC = () => {
         <div className="job-detail-container">
             <img src={job.companyLogo} alt="Company Logo" />
             <h1>{job.jobTitle}</h1>
+            <button className='button' onClick={saveJob}> Save Job </button> 
             
             <h2>Company</h2>
             <p className='blackText'>{job.companyName}</p>
             
-            <h2 >Location</h2>
+            <h2>Location</h2>
             <p className='blackText'>{job.jobGeo}</p>
 
             <h2>Salary</h2>
             <p className='blackText'>{job.annualSalaryMax} {job.salaryCurrency}</p>
             
             <h3>Description:</h3>
-            <p className="job-description-content">
+            <div className="job-description-content">
                 {jobDescriptionContent}
-            </p>
+            </div>
         </div>
         <div className='buddy-container'>
             <span className='bubble'>{affirmation?.affirmation}!</span>
             <br></br>
             <img src={buddy} className='buddy'></img>
         </div>
-    </>
+        </>
     );
 };
 
