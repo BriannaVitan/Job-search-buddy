@@ -14,8 +14,9 @@ Express.js, React, PostgresSQL, and etc.
 
 
 ## Screenshot
-    
-    ![Screenshot](assets/images/screenshot.png)
+
+   ![Screenshot](<job search buddy.PNG>)
+   
    
 
 
