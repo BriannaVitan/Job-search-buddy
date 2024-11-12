@@ -10,12 +10,12 @@
 </div>
 
 <!-- PROJECT LOGO -->
-  
+
 
 <div align="center">
   <a href="https://github.com/BriannaVitan/Job-search-buddy">
   <!--  Correct this file path to a logo if you would like one; otherwise, delete this a href -->
-    <img src="./public/images/" alt="Logo" width="80" height="80">
+    <img src="./client/src/assets/buddy.png" alt="Logo" width="80" height="80">
   </a>
 
 <!--  Edit App name -->
@@ -170,6 +170,8 @@ npm run start
 - [ ] Add Lines of future development ideas here
 
 See the [open issues](https://github.com/BriannaVitan/Job-search-buddy/issues) for a full list of proposed features (and known issues).
+
+  <img src="./job_search_buddy.PNG" alt="screenshot">
 
 <!-- CONTRIBUTING -->
 
