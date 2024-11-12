@@ -100,6 +100,7 @@ const JobDetail: React.FC = () => {
         localStorage.setItem("savedJobs", JSON.stringify(allJobs));
     }
 
+
     const xmlToReact = (xmlNode: Node): React.ReactNode => {
         if (xmlNode.nodeType === Node.TEXT_NODE) {
             return xmlNode.textContent;
