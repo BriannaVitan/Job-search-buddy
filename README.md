@@ -9,7 +9,6 @@
 
 </div>
 
-<!-- PROJECT LOGO -->
 
 
 <div align="center">
@@ -25,7 +24,9 @@
   <!--  Edit App description -->
     As an user I find it discouraging seeking employment. 
 I want users to be able to be motivated so that I can find a job more efficient and apply to more listings.
-Helping users like me to find jobs without the search being so daunting. <br />
+Helping users like me to find jobs without the search being so daunting. 
+<!-- PROJECT LOGO -->
+<br />
     <a href="https://github.com/BriannaVitan/Job-search-buddy"><strong>Explore the docs »</strong></a>
     <br />
     <br />
@@ -139,9 +140,7 @@ npm run start
 
 <!-- ROADMAP -->
 
-## Roadmap
 
-<!-- TODO: Plan out rough roadmap here -->
 
 #### MVP
 
@@ -213,7 +212,7 @@ Project Links:
 
 <!-- add your deployment link here -->
 
-[Deployment- coming soon]()
+[Deployment](https://job-search-buddy.onrender.com)
 
 
 
