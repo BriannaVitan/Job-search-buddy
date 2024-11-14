@@ -59,7 +59,7 @@ router.post('/signup', async (req: Request, res: Response) => {
 
   // Generate a JWT token for the authenticated user
   const token = jwt.sign({ username }, secretKey, { expiresIn: '1h' });
-  
+  console.log(token);
       return res.status(201).json({token});  // Add return here
   } catch (error) {
       console.error("Sign-up error:", error);
