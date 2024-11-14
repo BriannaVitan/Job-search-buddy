@@ -22,7 +22,7 @@ const SignUp = () => {
 
         try {
             const data = await signup(signUpData)
-
+            console.log(data);
             Auth.login(data.token);
         } catch (error) {
             console.error("Sign-up error:", error);
