@@ -1,11 +1,10 @@
 <div align="center">
 
-
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Contributors](https://img.shields.io/github/contributors/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
-[![Forks](https://img.shields.io/github/forks/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
-[![Stargazers](https://img.shields.io/github/stars/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
-[![Issues](https://img.shields.io/github/issues/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
+![Contributors](https://img.shields.io/github/contributors/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
+![Forks](https://img.shields.io/github/forks/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
+![Stargazers](https://img.shields.io/github/stars/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
+![Issues](https://img.shields.io/github/issues/404pandas/project-2-setup-guide.svg?style=plastic&logo=appveyor)
 
 </div>
 
